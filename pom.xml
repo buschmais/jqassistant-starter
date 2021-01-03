@@ -84,6 +84,7 @@
 
 		<!-- jqassistant -->
 		<jqassistant.version>1.11.1</jqassistant.version>
+		<jqassistant.git.version>1.8.0</jqassistant.git.version>
 	</properties>
 
 	<!--BOM -->
@@ -705,9 +706,21 @@
 									<listenAddress>0.0.0.0</listenAddress>
 								</embedded>
 							</store>
+							<scanIncludes>
+								<scanInclude>
+									<path>${project.basedir}/.git</path>
+								</scanInclude>
+							</scanIncludes>
 						</configuration>
 					</execution>
 				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>de.kontext-e.jqassistant.plugin</groupId>
+						<artifactId>jqassistant.plugin.git</artifactId>
+						<version>${jqassistant.git.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
