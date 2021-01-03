@@ -711,6 +711,10 @@
 									<path>${project.basedir}/.git</path>
 								</scanInclude>
 							</scanIncludes>
+							<groups>
+								<group>spring-boot:Default</group>
+							</groups>
+							<failOnSeverity>CRITICAL</failOnSeverity>
 						</configuration>
 					</execution>
 				</executions>
