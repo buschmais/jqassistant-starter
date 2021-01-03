@@ -82,6 +82,8 @@
 		<coverage.lines>.30</coverage.lines>
 		<coverage.branches>.37</coverage.branches>
 
+		<!-- jqassistant -->
+		<jqassistant.version>1.11.1</jqassistant.version>
 	</properties>
 
 	<!--BOM -->
@@ -680,6 +682,29 @@
 									</limits>
 								</rule>
 							</rules>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>com.buschmais.jqassistant</groupId>
+				<artifactId>jqassistant-maven-plugin</artifactId>
+				<version>${jqassistant.version}</version>
+				<executions>
+					<execution>
+						<id>default-cli</id>
+						<goals>
+							<goal>scan</goal>
+							<goal>analyze</goal>
+						</goals>
+						<configuration>
+							<store>
+								<embedded>
+									<!-- config needed for Gitpod -->
+									<listenAddress>0.0.0.0</listenAddress>
+								</embedded>
+							</store>
 						</configuration>
 					</execution>
 				</executions>
