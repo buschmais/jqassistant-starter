@@ -82,9 +82,13 @@
 		<coverage.lines>.30</coverage.lines>
 		<coverage.branches>.37</coverage.branches>
 
+		<!-- jMolecules -->
+		<jmolecules.version>1.3.0</jmolecules.version>
+
 		<!-- jqassistant -->
 		<jqassistant.version>1.11.1</jqassistant.version>
 		<jqassistant.git.version>1.8.0</jqassistant.git.version>
+		<jqassistant.jmolecules.version>1.2.0</jqassistant.jmolecules.version>
 	</properties>
 
 	<!--BOM -->
@@ -501,6 +505,13 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+
+		<!-- jMolecules -->
+		<dependency>
+			<groupId>org.jmolecules</groupId>
+			<artifactId>jmolecules-ddd</artifactId>
+			<version>${jmolecules.version}</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -713,6 +724,7 @@
 							</scanIncludes>
 							<groups>
 								<group>spring-boot:Default</group>
+								<group>jmolecules-ddd:Default</group>
 							</groups>
 							<failOnSeverity>CRITICAL</failOnSeverity>
 						</configuration>
@@ -723,6 +735,11 @@
 						<groupId>de.kontext-e.jqassistant.plugin</groupId>
 						<artifactId>jqassistant.plugin.git</artifactId>
 						<version>${jqassistant.git.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jqassistant.contrib.plugin</groupId>
+						<artifactId>jqassistant-jmolecules-plugin</artifactId>
+						<version>${jqassistant.jmolecules.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
