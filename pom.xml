@@ -725,6 +725,7 @@
 							<groups>
 								<group>spring-boot:Default</group>
 								<group>jmolecules-ddd:Default</group>
+								<group>jqassistant-dashboard:Default</group>
 							</groups>
 							<failOnSeverity>CRITICAL</failOnSeverity>
 						</configuration>
@@ -740,6 +741,11 @@
 						<groupId>org.jqassistant.contrib.plugin</groupId>
 						<artifactId>jqassistant-jmolecules-plugin</artifactId>
 						<version>${jqassistant.jmolecules.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jqassistant.contrib.plugin</groupId>
+						<artifactId>jqassistant-dashboard-plugin</artifactId>
+						<version>${jqassistant.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
