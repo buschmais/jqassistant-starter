@@ -725,8 +725,12 @@
 							<groups>
 								<group>spring-boot:Default</group>
 								<group>jmolecules-ddd:Default</group>
+								<group>shopizer:Default</group>
 							</groups>
 							<failOnSeverity>CRITICAL</failOnSeverity>
+							<ruleParameters>
+								<basePackage>com.salesmanager</basePackage>
+							</ruleParameters>
 						</configuration>
 					</execution>
 				</executions>

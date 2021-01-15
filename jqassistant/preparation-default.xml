@@ -1,0 +1,34 @@
+<jqassistant-rules
+        xmlns="http://schema.jqassistant.org/rule/v1.10"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schema.jqassistant.org/rule/v1.10 https://schema.jqassistant.org/rule/jqassistant-rule-v1.10.xsd">
+    <group id="preparation:Default">
+        <includeConcept refId="preparation:ShopizerFiles"/>
+        <includeConstraint refId="preparation:FilesOutsideBasePackage"/>
+    </group>
+
+    <concept id="preparation:ShopizerFiles">
+        <description>Labels all Shopizer artifacts and files with :Shopizer</description>
+        <cypher><![CDATA[
+         MATCH    (artifact:Main:Artifact{group: "com.shopizer"})
+         SET      artifact:Shopizer
+         WITH     artifact
+         MATCH    (artifact)-[:CONTAINS]->(c)
+         SET      c:Shopizer
+         RETURN   artifact.name AS Artifact,
+                  count(DISTINCT c) AS ContentCount
+         ORDER BY artifact.name
+        ]]></cypher>
+    </concept>
+
+    <constraint id="preparation:FilesOutsideBasePackage">
+        <requiresParameter name="basePackage" type="String"/>
+        <description>Checks that all Shopizer types are in the base package</description>
+        <cypher><![CDATA[
+         MATCH  (t:Type:Shopizer)
+         WHERE  NOT t.fqn STARTS WITH {basePackage}
+         RETURN t.fqn AS TypeOutsideBasePackage
+        ]]></cypher>
+    </constraint>
+
+</jqassistant-rules>
