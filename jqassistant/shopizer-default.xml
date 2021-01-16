@@ -6,5 +6,6 @@
         <includeGroup refId="preparation:Default"/>
         <includeGroup refId="logging:Default"/>
         <includeGroup refId="ddd:Default"/>
+        <includeGroup refId="architecture:Default"/>
     </group>
 </jqassistant-rules>

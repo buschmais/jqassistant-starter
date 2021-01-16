@@ -1,0 +1,62 @@
+= Technical Architecture
+
+[[architecture:Default]]
+[role=group,includesConcepts="architecture:*",includesConstraints="architecture:*"]
+== Concepts und Constraints
+
+[[architecture:Layers]]
+.Creates Layer nodes for a three-layer architecture.
+[source, cypher, role=concept]
+----
+WITH   ["Data", "Domain", "Presentation"] AS layers
+UNWIND layers AS layer
+MERGE  (l:Layer {name: layer})
+RETURN l.name AS Layer
+----
+
+[[architecture:LayerTypes]]
+.Links types to their Layers.
+[source, cypher, role=concept, requiresConcepts="architecture:Layers"]
+----
+MATCH (a:Artifact:Shopizer)-[:CONTAINS]->(t:Shopizer)
+WITH DISTINCT t,
+    CASE a.name
+        WHEN "sm-shop" THEN "Presentation"
+        WHEN "sm-shop-model" THEN "Presentation"
+        WHEN "sm-core" THEN "Domain"
+        WHEN "sm-core-modules" THEN "Domain"
+        WHEN "sm-core-model" THEN "Data"
+    END AS layer
+MATCH (l:Layer {name:layer})
+MERGE (l)-[:CONTAINS]->(t)
+RETURN l.name AS Layer, count(DISTINCT t) AS Size
+ORDER BY Size DESC
+----
+
+[[architecture:AllowedLayerDependencies]]
+.Enriches the information about allowed dependencies between technical layers.
+[source, cypher, role=concept, requiresConcepts="architecture:Layers"]
+----
+WITH [
+    ["Presentation", "Domain"], ["Presentation", "Data"],
+    ["Domain", "Data"]
+] AS allowedDependencies
+UNWIND allowedDependencies AS allowedDependency
+MATCH  (dependentLayer:Layer{name: allowedDependency[0]}),
+       (dependencyLayer:Layer{name: allowedDependency[1]})
+MERGE  (dependentLayer)-[:DEFINES_DEPENDENCY]->(dependencyLayer)
+RETURN dependentLayer.name, dependencyLayer.name
+----
+
+[[architecture:LayerDependencies]]
+.Checks that the layering is valid.
+[source, cypher, role=constraint, requiresConcepts="architecture:LayerTypes"]
+----
+MATCH    (l1:Layer)-[:CONTAINS]->(t1:Type:Shopizer),
+         (l2:Layer)-[:CONTAINS]->(t2:Type:Shopizer),
+         (t1)-[:DEPENDS_ON]->(t2)
+WHERE    l1 <> l2 AND
+         NOT EXISTS((l1)-[:DEFINES_DEPENDENCY]->(l2))
+RETURN   l1.name AS DependentLayer, l2.name AS Dependency
+ORDER BY DependentLayer, Dependency
+----
