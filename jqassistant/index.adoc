@@ -1,0 +1,20 @@
+:toc: left
+:toclevels: 3
+:data-uri:
+
+= Shopizer Documentation
+
+[[shopizer:Default]]
+[role=group,includesGroups="preparation:Default,logging:Default,ddd:Default,architecture:Default"]
+== Content
+
+This is the technical documentation of the Shopizer eCommerce-Software System.
+
+include::architecture.adoc[leveloffset=+1]
+include::ddd.adoc[leveloffset=+1]
+
+== Appendix
+
+include::jQA:Summary[concepts="*",constraints="*",importedConcepts="preparation:*,logging:*",importedConstraints="*"]
+
+include::jQA:Rules[constraints="preparation:*,logging:*,spring-*"]
