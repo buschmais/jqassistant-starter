@@ -751,6 +751,11 @@
 						<artifactId>jqassistant-dashboard-plugin</artifactId>
 						<version>${jqassistant.version}</version>
 					</dependency>
+					<dependency>
+						<groupId>org.jqassistant.contrib.plugin</groupId>
+						<artifactId>jqassistant-plantuml-rule-plugin</artifactId>
+						<version>${jqassistant.version}</version>
+					</dependency>
 				</dependencies>
 			</plugin>
 		</plugins>
