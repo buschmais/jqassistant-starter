@@ -35,7 +35,7 @@ ORDER BY Size DESC
 
 [[architecture:AllowedLayerDependencies]]
 .Enriches the information about allowed dependencies between technical layers.
-[source, cypher, role=concept, requiresConcepts="architecture:Layers"]
+[source, cypher, role=concept, requiresConcepts="architecture:Layers", reportType="plantuml-component-diagram"]
 ----
 WITH [
     ["Presentation", "Domain"], ["Presentation", "Data"],
@@ -44,8 +44,8 @@ WITH [
 UNWIND allowedDependencies AS allowedDependency
 MATCH  (dependentLayer:Layer{name: allowedDependency[0]}),
        (dependencyLayer:Layer{name: allowedDependency[1]})
-MERGE  (dependentLayer)-[:DEFINES_DEPENDENCY]->(dependencyLayer)
-RETURN dependentLayer.name, dependencyLayer.name
+MERGE  (dependentLayer)-[d:DEFINES_DEPENDENCY]->(dependencyLayer)
+RETURN dependentLayer, d, dependencyLayer
 ----
 
 [[architecture:LayerDependencies]]
