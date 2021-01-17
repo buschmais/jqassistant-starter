@@ -28,6 +28,27 @@ RETURN bC.name AS  BoundedContext,
        count(DISTINCT t) AS Classes
 ----
 
+[[ddd:BoundedContextDependencies]]
+[plantuml, bc-layer, role=concept, requiresConcepts="ddd:BoundedContextTypes"]
+.Aggregates the dependencies between
+----
+@startuml
+!pragma layout smetana
+
+skinparam componentStyle uml2
+
+[{}] as bc1 <<BoundedContext>>
+[{}] as type1 <<Type>> <<Shopizer>>
+[{}] as bc2 <<BoundedContext>>
+[{}] as type2 <<Type>> <<Shopizer>>
+
+bc1 -down-> type1 : :CONTAINS
+bc2 -down-> type2 : :CONTAINS
+type1 -right-> type2 : :DEPENDS_ON
+bc1 -right-> bc2 : (+) :DEPENDS_ON
+@enduml
+----
+
 [[ddd:ClassOutsideBoundedContext]]
 .All types need to be assigned to a bounded context.
 [source, cypher, role=constraint, requiresConcepts="ddd:BoundedContextTypes"]

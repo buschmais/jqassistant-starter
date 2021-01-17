@@ -89,6 +89,7 @@
 		<jqassistant.version>1.11.1</jqassistant.version>
 		<jqassistant.git.version>1.8.0</jqassistant.git.version>
 		<jqassistant.jmolecules.version>1.2.0</jqassistant.jmolecules.version>
+		<jqassistant.plantuml-rule.version>1.10.0</jqassistant.plantuml-rule.version>
 	</properties>
 
 	<!--BOM -->
@@ -744,6 +745,11 @@
 						<groupId>org.jqassistant.contrib.plugin</groupId>
 						<artifactId>jqassistant-jmolecules-plugin</artifactId>
 						<version>${jqassistant.jmolecules.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jqassistant.contrib.plugin</groupId>
+						<artifactId>jqassistant-plantuml-rule-plugin</artifactId>
+						<version>${jqassistant.plantuml-rule.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
