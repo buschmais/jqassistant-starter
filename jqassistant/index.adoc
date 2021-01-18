@@ -1,6 +1,7 @@
 :toc: left
 :toclevels: 3
 :data-uri:
+:numbered:
 
 = Shopizer Documentation
 
@@ -12,6 +13,7 @@ This is the technical documentation of the Shopizer eCommerce-Software System.
 
 include::architecture.adoc[leveloffset=+1]
 include::ddd.adoc[leveloffset=+1]
+include::arc42/arc42-template.adoc[leveloffset=+1]
 
 == Appendix
 
