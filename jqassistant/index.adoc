@@ -6,7 +6,7 @@
 = Shopizer Documentation
 
 [[shopizer:Default]]
-[role=group,includesGroups="preparation:Default,logging:Default,ddd:Default,architecture:Default"]
+[role=group,includesGroups="preparation:Default,logging:Default,ddd:Default,architecture:Default,arc42:Documentation"]
 == Content
 
 This is the technical documentation of the Shopizer eCommerce-Software System.

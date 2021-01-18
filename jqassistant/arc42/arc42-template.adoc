@@ -20,6 +20,8 @@ ifdef::basebackend-html[]
 ++++
 endif::basebackend-html[]
 
+[[arc42:Documentation]]
+[role=group,includesConcepts="arc42:*"]
 include::src/about-arc42.adoc[]
 
 // horizontal line
