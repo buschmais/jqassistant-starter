@@ -55,7 +55,14 @@ In the best case you will get away with examples or simple signatures.
 
 ****
 
-_**<Overview Diagram>**_
+[[arc42:ComponentDiagram]]
+[source, cypher, role=concept, reportType="plantuml-component-diagram"]
+.Decomposition of the Shopizer system into artifacts.
+----
+MATCH (a1:Main:Artifact)
+OPTIONAL MATCH (a1)-[d:DEPENDS_ON]->(a2:Main:Artifact)
+RETURN a1, d, a2
+----
 
 Motivation::
 
