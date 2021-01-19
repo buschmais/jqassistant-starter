@@ -6,7 +6,7 @@
 = Shopizer Documentation
 
 [[shopizer:Default]]
-[role=group,includesGroups="preparation:Default,logging:Default,ddd:Default,architecture:Default,arc42:Documentation"]
+[role=group,includesGroups="preparation:Default,logging:Default,ddd:Default,architecture:Default,arc42:Documentation,adr:Default"]
 == Content
 
 This is the technical documentation of the Shopizer eCommerce-Software System.
@@ -14,6 +14,7 @@ This is the technical documentation of the Shopizer eCommerce-Software System.
 include::architecture.adoc[leveloffset=+1]
 include::ddd.adoc[leveloffset=+1]
 include::arc42/arc42-template.adoc[leveloffset=+1]
+include::adr/adr.adoc[leveloffset=+1]
 
 == Appendix
 
