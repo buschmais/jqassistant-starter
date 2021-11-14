@@ -49,6 +49,17 @@ bc1 -right-> bc2 : (+) :DEPENDS_ON
 @enduml
 ----
 
+[[ddd:BoundecContextMap]]
+[source, cypher, role=concept, requiresConcepts="ddd:BoundedContextDependencies", reportType="context-mapper-diagram"]
+.Renders dependencies between Bounded Context as Context Map
+----
+MATCH          (bC1:BoundedContext)
+WHERE          bC1.name <> "common"
+OPTIONAL MATCH (bC1)-[d:DEPENDS_ON]->(bC2:BoundedContext)
+WHERE          bC2.name <> "common"
+RETURN         bC1, d, bC2
+----
+
 [[ddd:ClassOutsideBoundedContext]]
 .All types need to be assigned to a bounded context.
 [source, cypher, role=constraint, requiresConcepts="ddd:BoundedContextTypes"]

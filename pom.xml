@@ -90,6 +90,7 @@
 		<jqassistant.git.version>1.8.0</jqassistant.git.version>
 		<jqassistant.jmolecules.version>1.2.0</jqassistant.jmolecules.version>
 		<jqassistant.plantuml-rule.version>1.10.0</jqassistant.plantuml-rule.version>
+		<jqassistant.context-mapper.version>1.0.0</jqassistant.context-mapper.version>
 	</properties>
 
 	<!--BOM -->
@@ -750,6 +751,11 @@
 						<groupId>org.jqassistant.contrib.plugin</groupId>
 						<artifactId>jqassistant-plantuml-rule-plugin</artifactId>
 						<version>${jqassistant.plantuml-rule.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.jqassistant.contrib.plugin</groupId>
+						<artifactId>jqassistant-context-mapper-plugin</artifactId>
+						<version>${jqassistant.context-mapper.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
